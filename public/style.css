@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.4; }
+section { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+input, select, textarea, button { padding: 6px; }
+textarea { width: 100%; min-height: 70px; }
+pre { white-space: pre-wrap; }
+.muted { color: #666; font-size: 12px; }
+nav { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+nav a { text-decoration: none; border: 1px solid #ddd; border-radius: 8px; padding: 6px 10px; color: #333; }
+nav a:hover { background: #f2f2f2; }
+#chat-log { max-height: 260px; overflow-y: auto; border: 1px solid #ddd; padding: 8px; }

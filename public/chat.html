@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drbárna</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/">Domů</a><a href="/ratings.html">Hodnocení</a><a href="/lateness.html">Pozdní příchody</a><a href="/daily-vote.html">Král/Královna</a><a href="/semester-vote.html">Pololetní kategorie</a><a href="/fun.html">Zábava</a>
+    </nav>
+    <section>
+      <h2>💬 Drbárna (live chat + memes)</h2>
+      <div id="chat-log"></div>
+      <div class="row">
+        <input id="chat-text" placeholder="Napiš zprávu" />
+        <input id="chat-image" placeholder="URL na meme obrázek (volitelné)" />
+        <button id="chat-send">Odeslat</button>
+      </div>
+    </section>
+    <script src="/common.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/chat.js"></script>
+  </body>
+</html>

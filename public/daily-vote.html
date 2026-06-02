@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Král/Královna dne</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/">Domů</a><a href="/ratings.html">Hodnocení</a><a href="/chat.html">Drbárna</a><a href="/lateness.html">Pozdní příchody</a><a href="/semester-vote.html">Pololetní kategorie</a><a href="/fun.html">Zábava</a>
+    </nav>
+    <section>
+      <h2>👑 Král/Královna dne</h2>
+      <div class="row">
+        <select id="daily-teacher"></select>
+        <button id="daily-nom">Nominovat</button>
+        <button id="daily-vote">Hlasovat</button>
+      </div>
+      <pre id="daily-results"></pre>
+    </section>
+    <script src="/common.js"></script>
+    <script src="/daily-vote.js"></script>
+  </body>
+</html>

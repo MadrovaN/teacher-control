@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hodnocení</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/">Domů</a><a href="/chat.html">Drbárna</a><a href="/lateness.html">Pozdní příchody</a><a href="/daily-vote.html">Král/Královna</a><a href="/semester-vote.html">Pololetní kategorie</a><a href="/fun.html">Zábava</a>
+    </nav>
+    <section>
+      <h2>⭐ Hodnocení učitelů</h2>
+      <div class="row">
+        <select id="rating-teacher"></select>
+        <select id="rating-stars"><option value="1">1★</option><option value="2">2★</option><option value="3">3★</option><option value="4">4★</option><option value="5">5★</option></select>
+        <select id="rating-sentiment"><option value="positive">Pozitivní</option><option value="negative">Negativní</option></select>
+      </div>
+      <textarea id="rating-text" placeholder="Volitelný komentář"></textarea>
+      <button id="rating-submit">Uložit hodnocení</button>
+    </section>
+
+    <section>
+      <h2>📊 Overall rating + žebříček</h2>
+      <pre id="leaderboard"></pre>
+    </section>
+
+    <section>
+      <h2>🗣️ Recenze ostatních uživatelů</h2>
+      <div class="row">
+        <select id="reviews-teacher-filter"></select>
+        <button id="reviews-refresh">Načíst recenze</button>
+      </div>
+      <pre id="reviews-list"></pre>
+    </section>
+
+    <script src="/common.js"></script>
+    <script src="/ratings.js"></script>
+  </body>
+</html>

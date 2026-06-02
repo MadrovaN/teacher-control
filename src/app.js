@@ -10,6 +10,12 @@ const DEFAULT_TEACHERS = [
   { id: 'svobodova', name: 'Mgr. Svobodová' },
   { id: 'kral', name: 'Mgr. Král' },
 ];
+const SEMESTER_CATEGORIES = [
+  'nejvíc pozdě učitel',
+  'nejvíc co známkuje',
+  'nejtěžší testy',
+  'nejhezčí',
+];
 
 function createStore() {
   return {
@@ -94,6 +100,23 @@ function createApp(store = createStore()) {
 
   app.get('/api/teachers', (_req, res) => {
     res.json(store.teachers);
+  });
+
+  app.get('/api/ratings', (req, res) => {
+    const teacherId = sanitizeText(req.query.teacherId, 64);
+    const list = teacherId ? store.ratings.filter((r) => r.teacherId === teacherId) : store.ratings;
+    const withTeacherName = list
+      .map((r) => ({
+        id: r.id,
+        teacherId: r.teacherId,
+        teacherName: store.teachers.find((t) => t.id === r.teacherId)?.name || r.teacherId,
+        stars: r.stars,
+        sentiment: r.sentiment,
+        text: r.text,
+        createdAt: r.createdAt,
+      }))
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    res.json(withTeacherName);
   });
 
   app.post('/api/ratings', (req, res) => {
@@ -212,6 +235,7 @@ function createApp(store = createStore()) {
 
     if (!isTeacher(store, teacherId)) return res.status(400).json({ error: 'Unknown teacher' });
     if (!category) return res.status(400).json({ error: 'category is required' });
+    if (!SEMESTER_CATEGORIES.includes(category)) return res.status(400).json({ error: 'Unknown category' });
 
     const semesterRecord = ensureSemesterRecord(store, semester);
     if (!semesterRecord.has(category)) {
@@ -243,6 +267,10 @@ function createApp(store = createStore()) {
     res.json({ semester, results });
   });
 
+  app.get('/api/semester-vote/categories', (_req, res) => {
+    res.json(SEMESTER_CATEGORIES);
+  });
+
   app.delete('/api/chat/:id', (req, res) => {
     if (req.header('x-admin-token') !== ADMIN_TOKEN) return res.status(403).json({ error: 'Forbidden' });
 
@@ -271,4 +299,5 @@ module.exports = {
   getSemesterKey,
   sanitizeText,
   computeLeaderboard,
+  SEMESTER_CATEGORIES,
 };
