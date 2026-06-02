@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Control</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.4; }
+      section { border: 1px solid #ddd; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; }
+      input, select, textarea, button { padding: 6px; }
+      #chat-log { max-height: 220px; overflow-y: auto; border: 1px solid #ddd; padding: 8px; }
+      .muted { color: #666; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Teacher Control</h1>
+    <p class="muted">Anonymní studentský feedback, chat a hlasování (s respektem).</p>
+
+    <section>
+      <h2>⭐ Hodnocení učitelů</h2>
+      <div class="row">
+        <select id="rating-teacher"></select>
+        <select id="rating-stars">
+          <option value="1">1★</option><option value="2">2★</option><option value="3">3★</option><option value="4">4★</option><option value="5">5★</option>
+        </select>
+        <select id="rating-sentiment"><option value="positive">Pozitivní</option><option value="negative">Negativní</option></select>
+      </div>
+      <textarea id="rating-text" placeholder="Volitelný komentář"></textarea>
+      <button id="rating-submit">Uložit hodnocení</button>
+      <pre id="leaderboard"></pre>
+    </section>
+
+    <section>
+      <h2>💬 Drbárna (live chat + memes)</h2>
+      <div id="chat-log"></div>
+      <div class="row">
+        <input id="chat-text" placeholder="Napiš zprávu" />
+        <input id="chat-image" placeholder="URL na meme obrázek (volitelné)" />
+        <button id="chat-send">Odeslat</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>⏰ Pozdní příchody učitelů</h2>
+      <div class="row">
+        <select id="late-teacher"></select>
+        <input id="late-min" type="number" min="1" max="120" placeholder="Minuty" />
+        <input id="late-note" placeholder="Poznámka" />
+        <button id="late-send">Zapsat</button>
+      </div>
+      <pre id="late-list"></pre>
+    </section>
+
+    <section>
+      <h2>👑 Král/Královna dne</h2>
+      <div class="row">
+        <select id="daily-teacher"></select>
+        <button id="daily-nom">Nominovat</button>
+        <button id="daily-vote">Hlasovat</button>
+      </div>
+      <pre id="daily-results"></pre>
+    </section>
+
+    <section>
+      <h2>🏆 Pololetní kategorie</h2>
+      <div class="row">
+        <input id="sem-category" placeholder="Kategorie (např. nejtěžší testy)" />
+        <select id="sem-teacher"></select>
+        <button id="sem-vote">Hlasovat (1x na kategorii)</button>
+      </div>
+      <pre id="sem-results"></pre>
+    </section>
+
+    <section>
+      <h2>🎉 Zábava navíc</h2>
+      <button id="fun-btn">Náhodný školní tip dne</button>
+      <p id="fun-text"></p>
+    </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>
