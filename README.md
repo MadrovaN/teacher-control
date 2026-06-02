@@ -1,7 +1,8 @@
 poznatky: 
-Nebude to tak složité na napsání ale spíše na vymyšlení jak přesně to bude
-Bude potřeba vymyslet jak to bude vypadat seznam učitelů a celý overall rating.
-Nevím jestli to je uplně práce pro skoro 30 lidí ale nejspíš by se ho podařilo dokončit
+Nebude to tak složité na napsání ale spíše na vymyšlení, jak přesně to bude
+bude potřeba vymyslet, jak to bude vypadat seznam učitelů a celý overall rating.
+Nevím jestli to je uplně práce pro skoro 30 lidí ale nejspíš by se ho podařilo dokončit.
+Tento projekt má asi největší šanci na nějaké dokončení a podle potřeby ho kdyžtak můžeme o nějaké funkce rozšířit.
 
 
 
