@@ -20,14 +20,14 @@ test('one user can vote only once per semester category', async (t) => {
 
   const first = await jsonRequest(app, '/api/semester-vote', {
     method: 'POST',
-    body: { category: 'nejtezsi testy', teacherId: 'novak', semester: '2026-H1' },
+    body: { category: 'nejtěžší testy', teacherId: 'novak', semester: '2026-H1' },
     anonId: 'anon-a',
   });
   assert.equal(first.status, 201);
 
   const second = await jsonRequest(app, '/api/semester-vote', {
     method: 'POST',
-    body: { category: 'nejtezsi testy', teacherId: 'kral', semester: '2026-H1' },
+    body: { category: 'nejtěžší testy', teacherId: 'kral', semester: '2026-H1' },
     anonId: 'anon-a',
   });
   assert.equal(second.status, 409);
@@ -41,4 +41,13 @@ test('leaderboard calculates average stars', () => {
   const novak = leaderboard.find((x) => x.teacherId === 'novak');
   assert.equal(novak.averageStars, 4);
   assert.equal(novak.ratingCount, 2);
+});
+
+test('leaderboard rounds decimal average to 2 places', () => {
+  const store = createStore();
+  store.ratings.push({ teacherId: 'novak', stars: 5 }, { teacherId: 'novak', stars: 5 }, { teacherId: 'novak', stars: 4 });
+
+  const leaderboard = computeLeaderboard(store);
+  const novak = leaderboard.find((x) => x.teacherId === 'novak');
+  assert.equal(novak.averageStars, 4.67);
 });

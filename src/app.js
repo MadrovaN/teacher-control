@@ -1,4 +1,5 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const path = require('path');
 
 const MAX_TEXT = 500;
@@ -55,7 +56,7 @@ function computeLeaderboard(store) {
         teacherId: teacher.id,
         teacherName: teacher.name,
         ratingCount: count,
-        averageStars: count ? Number((total / count).toFixed(2)) : 0,
+        averageStars: count ? Math.round((total / count) * 100) / 100 : 0,
       };
     })
     .sort((a, b) => b.averageStars - a.averageStars || b.ratingCount - a.ratingCount);
@@ -80,8 +81,15 @@ function ensureSemesterRecord(store, semester) {
 
 function createApp(store = createStore()) {
   const app = express();
+  const limiter = rateLimit({
+    windowMs: 60_000,
+    limit: 120,
+    standardHeaders: true,
+    legacyHeaders: false,
+  });
 
   app.use(express.json());
+  app.use(limiter);
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
   app.get('/api/teachers', (_req, res) => {

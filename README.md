@@ -3,7 +3,7 @@
 Jednoduchá Node.js + Express aplikace pro anonymní hodnocení učitelů.
 
 ## Funkce
-- 5hvězdičkové hodnocení učitelů (pozitivní/negativní + vlastní text)
+- 5-hvězdičkové hodnocení učitelů (pozitivní/negativní + vlastní text)
 - Live chat „drbárna“ přes Socket.IO (včetně URL na školní memes)
 - Evidence pozdních příchodů učitelů
 - Denní hlasování Král/Královna dne (nominace + hlasování)
