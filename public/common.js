@@ -20,7 +20,7 @@ async function api(path, options = {}) {
     } catch {
       message = await res.text();
     }
-    throw new Error(message || 'Požadavek selhal');
+    throw new Error(message);
   }
 
   if (res.status === 204) return null;

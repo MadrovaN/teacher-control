@@ -19,7 +19,15 @@ byId('sem-vote').onclick = async () => {
     });
     await refreshSemester();
   } catch (e) {
-    alert(e.message);
+    if (e.message.includes('already voted')) {
+      alert('V této kategorii už jsi hlasoval/a.');
+      return;
+    }
+    if (e.message.includes('Unknown category')) {
+      alert('Kategorie není platná.');
+      return;
+    }
+    alert('Hlasování se nepovedlo, zkus to prosím znovu.');
   }
 };
 
