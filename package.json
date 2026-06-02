@@ -1,0 +1,27 @@
+{
+  "name": "teacher-control",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadrovaN/teacher-control.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MadrovaN/teacher-control/issues"
+  },
+  "homepage": "https://github.com/MadrovaN/teacher-control#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "socket.io": "^4.8.3"
+  }
+}

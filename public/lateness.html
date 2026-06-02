@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pozdní příchody</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="/">Domů</a><a href="/ratings.html">Hodnocení</a><a href="/chat.html">Drbárna</a><a href="/daily-vote.html">Král/Královna</a><a href="/semester-vote.html">Pololetní kategorie</a><a href="/fun.html">Zábava</a>
+    </nav>
+    <section>
+      <h2>⏰ Pozdní příchody učitelů</h2>
+      <div class="row">
+        <select id="late-teacher"></select>
+        <input id="late-min" type="number" min="1" max="120" placeholder="Minuty" />
+        <input id="late-note" placeholder="Poznámka" />
+        <button id="late-send">Zapsat</button>
+      </div>
+      <pre id="late-list"></pre>
+    </section>
+    <script src="/common.js"></script>
+    <script src="/lateness.js"></script>
+  </body>
+</html>
